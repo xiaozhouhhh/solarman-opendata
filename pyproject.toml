@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solarman-opendata"
+version = "0.0.2"
+description = "Asynchronous Python API for Solarman devices"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    {name = "solarmanpv", email = "info@solarmanpv.com"}
+]
+license = "Apache-2.0"
+classifiers = [
+    "Intended Audience :: Developers",
+    "Topic :: Home Automation",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+keywords = ["solarman", "iot", "home automation"]
+dependencies = [
+    "aiohttp>=3.8.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/solarmanpv/solarman-opendata"
+Repository = "https://github.com/solarmanpv/solarman-opendata"
+Issues = "https://github.com/solarmanpv/solarman-opendata/issues"
+
+[tool.setuptools.packages.find]
+include = ["solarman*"]
+exclude = ["tests*"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-mock>=3.10.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "types-requests>=2.31.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py37"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+strict = true
+show_error_codes = true
+ignore_missing_imports = true
+exclude = "tests/"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+asyncio_mode = "auto"
+addopts = "--verbose --cov=solarman_opendata --cov-report=term-missing"
+testpaths = ["tests"]
