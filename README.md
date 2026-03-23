@@ -5,7 +5,7 @@ Python client for interacting with Solarman devices over local network.
 ## Installation
 
 ```bash
-pip install solarman-opendata
+pip install solarman-opendata-test
 ```
 
 ## Usage
